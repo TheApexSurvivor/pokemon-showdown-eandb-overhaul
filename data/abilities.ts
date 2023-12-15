@@ -4058,32 +4058,29 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	slowstart: {
 		onStart(pokemon) {
-			pokemon.addVolatile('slowstart');
+			this.boost({
+					atk: -6,
+					def: 6,
+					spa: -6,
+					spd: 6,
+					spe: -6,
+				}, pokemon);
 		},
-		onEnd(pokemon) {
-			delete pokemon.volatiles['slowstart'];
-			this.add('-end', pokemon, 'Slow Start', '[silent]');
-		},
-		condition: {
-			duration: 5,
-			onResidualOrder: 28,
-			onResidualSubOrder: 2,
-			onStart(target) {
-				this.add('-start', target, 'ability: Slow Start');
-			},
-			onModifyAtkPriority: 5,
-			onModifyAtk(atk, pokemon) {
-				return this.chainModify(0.5);
-			},
-			onModifySpe(spe, pokemon) {
-				return this.chainModify(0.5);
-			},
-			onEnd(target) {
-				this.add('-end', target, 'Slow Start');
-			},
+		onResidualOrder: 28,
+		onResidualSubOrder: 2,
+		onResidual(pokemon) {
+			if (pokemon.activeTurns) {
+				this.boost({
+					atk: 1,
+					def: -1,
+					spa: 1,
+					spd: -1,
+					spe: 1,
+				});
+			}
 		},
 		name: "Slow Start",
-		rating: -1,
+		rating: 0,
 		num: 112,
 	},
 	slushrush: {
