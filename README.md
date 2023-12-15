@@ -14,6 +14,13 @@ Navigation: [Website][1] | **Server repository** | [Client repository][2] | [Dex
 Introduction
 ------------------------------------------------------------------------
 
+This is a Fork of Pokémon Showdown which is being modified to test my own ideas and will likely be a buggy mess.
+========================================================================
+
+Below is the original description from showdown which I will likely edit in the future:
+------------------------------------------------------------------------
+
+
 Pokémon Showdown is many things:
 
 - A **web site** you can use for Pokémon battling
